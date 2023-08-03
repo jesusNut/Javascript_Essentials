@@ -1,0 +1,12 @@
+{
+  "name": "javscriptessentials",
+  "version": "1.0.0",
+  "description": "learning js and node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./ErrorHandling/TryCatch.js"
+  },
+  "keywords": [],
+  "author": "JesusNut",
+  "license": "ISC"
+}

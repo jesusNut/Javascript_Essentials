@@ -1,6 +1,14 @@
 //! Objects are collection of properties, functions and arrays
 //! and can have a name like a variable.
 
+//*******************  WAYS TO CREATE OBJECTS ***********************
+//!-------------------------------------------------------------------
+//* We will discuss 4 ways:
+//* 1. USING OBJECT LITERALS. (covered in this section)
+//* 2. USING CONSTRUCTOR FUNCTIONS. (covered in spclFunc_ConstructorFunction section)
+//* 3. USING FACTORY FUNCTION. (covered in spclFunc_FactoryFunction section)
+//* 4. Object.create() (covered in this section)
+
 //* Creating objects using object literal syntax
 
 //creating a blank object with name 'myobj1'
@@ -195,24 +203,31 @@ for (let key in student5) {
   } else console.log(student5[key]);
 }
 
-//! OBJECT METHODS : writing functions inside objects (can use traditional way or arrow functions)
+//! OBJECT METHODS : writing functions inside objects 
+//! (can use traditional way or arrow functions or Modern ES6 Approach)
 
 let person = {
   firstName: "Tadika",
   lastName: "Bandari",
+  //method written in traditional style
   ageCalculator: function (birthyear, currentYear) {
     return currentYear - birthyear;
   },
-
+  //method written as arrow function
   doGrettings: (data) => {
     console.log(`hi beautiful..sexy..you gonna die one day ${data} hahaha...`);
   },
+  //method written in Modern ES6 style
+  detailsPrinter(){
+    console.log(`Details are : ${this.firstName} and ${this.lastName}`);
+  }
 };
 
 //accessing object methods
 
 console.log(person.ageCalculator(1992, 2023));
 person.doGrettings("mallika sherawat");
+person.detailsPrinter();
 
 //! Objects inside an array
 

@@ -1,3 +1,6 @@
+
+//? https://www.freecodecamp.org/news/var-let-and-const-whats-the-difference/
+
 //! Variables declared with var are in the function scope.
 //! Variables declared as let or const are in the block scope.
 
@@ -30,17 +33,26 @@ console.log(data); //const, cannot be accessed outside of block scope
 //! Hoisting is allowed for var.
 //! Hoisting is NOT ALLOWED FOR let and const.
 
-data = "abc";
-console.log(data); //abc
-console.log(star); //undefined, but no reference error.
+//example 1 with var
+cdata = "abc";
+console.log(cdata);
+var cdata; //abc
 
-var data;
+//example 2 with var
+console.log(star); //undefined, but no reference error.
 var star = "somedata";
 
-data1 = "abc";
-console.log(data1); //Cannot access 'data1' before initialization
+//example 2 will be evaluated by JS as :
+// var star;
+// console.log(star); // greeter is undefined
+// star = "somedata"
 
-let data1;
+//example with let
+
+kdata = "abc";
+console.log(kdata); //Cannot access 'kdata' before initialization
+
+let kdata;
 
 //? 'CONST' DECLARATIONS MUST BE INITIALIZED.
 
@@ -48,7 +60,7 @@ let data1;
 //! Reassigning of value NOT ALLOWED for const as const are used for constants.
 
 //! Redeclaration of variables are allowed in case of var in the same scope.
-//! Redeclaration of variables are allowed in case of let and const in same scope.
+//! Redeclaration of variables are not allowed in case of let and const in same scope.
 
 var sage = "abc";
 

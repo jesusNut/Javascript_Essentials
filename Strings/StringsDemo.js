@@ -1,5 +1,14 @@
 //* STRING
 
+//? IMMUTABILITY OF STRINGS IN JS *****************************************
+
+// It's important to know that in JavaScript, strings are immutable.
+// This means that once a string is created, its contents cannot be changed.
+
+let fname = 'Danny';
+fname.toLowerCase();
+console.log(fname); // Danny - the string method didn't mutate the string
+
 //? Ways to declare a String ***********************************************
 
 let somename = "welcome to my rich life"; //! String literal - RECOMMENDED

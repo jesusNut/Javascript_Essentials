@@ -89,3 +89,48 @@ const myMobile1 = new Mobile();
 // console.log(myMobile1.unlockPIN) //9876
 
 //! METHOD OVERLOADING IS NOT POSSIBLE IN JS.
+//! JavaScript does allow us to create multiple functions with the same name. But it overrides the previously written function.
+//! It always calls the last declared function irrespective of how many functions you have declared with same name.
+
+
+//------------------------------------------------------------------------------------
+
+//* ********* Multiple ways to write methods inside a class*********
+
+class Wheat {
+
+  constructor(quality) {
+    this.quality = quality;
+  }
+
+  //way 1
+
+  printOne() {
+    console.log(`I am one kg wheat of ${this.quality} quality.`);
+  }
+
+  //way 2
+
+  printTwo = function () {
+    console.log(`I am one kg wheat of ${this.quality} quality.`);
+  }
+
+  //way 3
+
+  printThree = ()=>{
+    console.log(`I am one kg wheat of ${this.quality} quality.`);
+  }
+
+}
+
+
+const pack1 = new Wheat('High');
+
+pack1.printOne();
+pack1.printTwo();
+pack1.printThree();
+
+//todo : Arrow Function returns undefined when called from an object but
+//todo   returns a string when called from a class instance.
+
+//? https://stackoverflow.com/questions/73430164/arrow-function-returns-undefined-when-called-from-an-object-but-returns-a-string

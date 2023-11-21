@@ -33,6 +33,10 @@ console.log(data); //const, cannot be accessed outside of block scope
 //! Hoisting is allowed for var.
 //! Hoisting is NOT ALLOWED FOR let and const.
 
+/**================================================================================================
+ *!    JavaScript only hoists declarations, not initializations. 
+ *================================================================================================**/
+
 //example 1 with var
 cdata = "abc";
 console.log(cdata);

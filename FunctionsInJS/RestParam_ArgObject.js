@@ -1,14 +1,17 @@
 /**
  *  * Rest parameter and 'arguments' object
  *
- * @definition
+ *   @definition
  *
  *  * 1. The rest param is denoted by ...<paramName>
- *  * The rest parameter syntax allows us to represent an indefinite number of arguments as an array
+ *  * The rest parameter syntax allows us to represent an indefinite number of arguments as an array.
  *
  *  * 2. 'arguments' object made available within the function body only
  *  * 3. The 'arguments' can be access by array-like notation arguments[i]
  *  * 4. It has a length property
+ *  ! 5. We must provide an array type to the rest parameter.
+ *  ! 6. The Rest Parameters must appear last in the Parameter list.
+ *  ! 7. There can be only one rest parameter in a function.
  *
  */
 

@@ -66,6 +66,10 @@ console.log(typeof(i))
 
 console.log("--------------------------");
 
+//! 😬😬😬 type of null is : object
+//! 😬😬😬 type of undefined is undefined
+//! 😬😬😬 typeof NaN is number.
+
 //3. null vs undefined
 
 var k ;                     // undefined

@@ -248,3 +248,9 @@ if (_.isEqual(a1, a2)) console.log("Objects are same....");
 else {
   console.log(`Objects are not same`);
 }
+
+//* =================================================================================
+
+//* WAY 3::: USING Custom Function
+
+//? https://www.youtube.com/watch?v=VYmf4EWe4IQ&list=PLAjOh0819rC2rCAN1QjAk92sdm9cJsq7U&index=8 

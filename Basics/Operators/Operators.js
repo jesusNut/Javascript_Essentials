@@ -342,7 +342,7 @@ else(
     console.log("not--matched....")
 )
 
-//! [Strict equality] === denotes equality for two values AND TYPES 
+//! [Strict equality] === denotes equality for two values && TYPES 
 
 console.log("**********  COMAPRISON WITH === *********")
 

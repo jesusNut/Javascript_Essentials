@@ -4,8 +4,6 @@ console.log(`-----------------------------------`);
 
 //!converting JSON string to OBJECT "JSON.parse()".
 
-//? 
-
 let jsonString = '{"name":"Sammy","email":"sammy@example.com","plan":"Pro"}';
 
 const parsedValue = JSON.parse(jsonString);

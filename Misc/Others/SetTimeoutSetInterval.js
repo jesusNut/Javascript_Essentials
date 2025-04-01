@@ -4,9 +4,24 @@
 
 // The setTimeout() IS A METHOD which calls a function after a number of milliseconds.
 // The setTimeout() is executed only once.
-// setTimeout() function returns a Number which is The id of the timer.
-// timer provided is in milliseconds.
-// clearTimeout() is used to clear already set setTimeout func. using its id.
+
+//* Return Value:
+
+// The setTimeout() function returns a positive integer. This integer is a unique identifier for the timer that was created.
+// This ID is what you store in a variable so that you can reference it later if you need to cancel the timeout.
+//! In Node.js, setTimeout() returns a Timeout object. This object encapsulates the timer and its associated properties.
+// This object contains information about the timer, such as its timeout duration, the function to execute, and internal timer management details.
+
+//* Purpose of the ID:
+
+// The primary purpose of this returned number is to be used as an argument for the clearTimeout() function.
+// By passing this ID to clearTimeout(), you can tell the browser which specific timeout you want to cancel.
+
+//! clearTimeout() in Node.js:
+
+// Even though setTimeout() returns an object, you still use clearTimeout() to cancel the timer.
+// You pass the entire Timeout object to clearTimeout().
+
 //? It is not possible to return anything else from setTimeout.
 //? In order to return anything from setTimeout use Promise and pass via resolve(valueToBePassed).
 

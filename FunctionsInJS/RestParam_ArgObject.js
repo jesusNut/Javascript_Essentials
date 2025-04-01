@@ -11,7 +11,6 @@
  *  * 4. It has a length property
  *  ! 5. We must provide an array type to the rest parameter.
  *  ! 6. The Rest Parameters must appear last in the Parameter list.
- *  ! 7. There can be only one rest parameter in a function.
  *
  */
 

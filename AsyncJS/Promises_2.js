@@ -4,13 +4,25 @@
 //* Used to overcome - the issue of CALLBACK HELL or PYRAMID OF DOOM.
 
 //* SYNTAX: new Promise((resolve, reject)=>{})
+//* Here, resolve and reject are themselves function provided by the Promise implementation.
 
-//* 'resolve();' and 'reject();' themselves are treated as callback functions to tell whether the async code is resolved or rejected.
+// resolve(value):
+
+// resolve is a function that, when called, fulfills the Promise with the given value.
+// Calling resolve() transitions the Promise from the "pending" state to the "fulfilled" state.
+// The then() method of the Promise will be called with the value.
+
+// reject(reason):
+
+// reject is a function that, when called, rejects the Promise with the given reason (usually an error object).
+// Calling reject() transitions the Promise from the "pending" state to the "rejected" state.
+// The catch() method of the Promise will be called with the reason.
+
 //*! BUT, RESOLVE & REJECT ONLY ACCEPTS ONE ARGUMENT
 //! which is then available in then() and catch() respectively.
 
 //* A promise can have 3 states -
-//? PENDING - any state when the state is not resolved or rejected.
+//? PENDING - any state when the state is neither resolved nor rejected.
 //? FULFILLED - when a promise is resolved.
 //? REJECTED - when a promise is rejected.
 
@@ -21,6 +33,20 @@
 
 //* then() and catch() can also be chained.
 //* then() can be chained if each then() is also returning a promise. [see Promise_3.js] or something else.[Udemy-cope automation - Promise demo lec.70]
+
+// Rules of Returning from then():
+
+// Returning a Value (Non-Promise):
+
+// If you return a regular value (string, number, object, etc.) from the then() callback, that value is wrapped in a new resolved Promise.
+// The next then() in the chain will receive this resolved Promise's value as its argument.
+// Returning a Promise:
+
+// If you return a Promise from the then() callback, the next then() in the chain will wait for that returned Promise to resolve or reject.
+// The next then() will receive the resolved value of the returned Promise.
+// Returning Nothing (or undefined):
+
+// If you don't explicitly return anything (or return undefined), the next then() will receive a resolved Promise with the value undefined.
 
 //! UnhandledPromiseRejection : when a promise rejects but that code 
 //! is not handled by coder in either try-catch() block or .catch() method.

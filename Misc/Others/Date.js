@@ -4,7 +4,7 @@
 //! the standard time fixed as starting point of reference for date & time in JS is:
 //! Jan 1st of 1970 UTC+0.
 
-//* creating a Date object - for current date-time and its important methods
+//* creating a Date object - for CURRENT date-time and its important methods
 
 let myDate = new Date();
 

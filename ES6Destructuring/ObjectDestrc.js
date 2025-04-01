@@ -4,8 +4,11 @@
 //? https://www.youtube.com/watch?v=XIYJhGEmsYc&list=PL699Xf-_ilW6kwrOg4Wm87ZJ-idHubBrG&index=15
 //? 
 
+//=======================================================================
+//! Syntax: Uses curly braces {} to extract values from an object.
+//=======================================================================
 
-let book = {
+let book = {  
   name: "the great tester",
   page: 500,
   price: "$999.99",

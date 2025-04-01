@@ -6,17 +6,23 @@
 //! Nodejs is a asynchronus platform.
 //! Nodejs is single threaded and has a non blocking I/O.
 
-//! So, JS itself & code when run in NodeJS is asynchronus in nature.
+//! So, JS itself is synchronous & code when run in NodeJS is asynchronus in nature.
+
+
 
 //If there is an async process in a function,
 // => Nodejs will not wait at that function to get completed.
 // => It will move to the subsequent lines.
+// => When a task finishes, the program is notified, and the result is handled.
+
 
 //? BUT IS THIS THE WAY WE CAN WORK IN TEST AUTOMATION? - NO ..HELL NO BRO !!!!!!!!!!!!
 
 //* Examples of async processes in Test automation:
 //1. Waiting for a api request to process or return a response.
 //2. DB operations
+//3. Reading files.
+//4. Timers: Using functions like setTimeout() and setInterval().
 
 //* We have to make our code work in sync even when our function has async calls.
 

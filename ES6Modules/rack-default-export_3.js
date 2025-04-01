@@ -11,7 +11,9 @@
 //todo       It is like marking that one thing as the most important to share.
 //todo    2. When importing a default export in another file, you can give it any name you want during the import,
 //todo       and you don't need to use curly braces {}.
-//todo    3. A file can have only one default export.
+//todo    3. A file can have only one default export item.
+
+//! We can absolutely use both named exports and a default export within the same JavaScript (ES module) file.
 
 //---------------------------------------------------------------------------------
 
@@ -52,3 +54,21 @@ export class StringManipulator{
         return this.data.toUpperCase();
     }
 }
+
+
+//===========================================================================================================
+
+
+//! below is also valid :
+
+// export default { item1, item2, item3 };
+
+// This is perfectly valid. You're exporting a single object as the default export.
+// That object contains multiple properties (item1, item2, item3).
+
+//* When importing this module, you would use:
+
+// import myObject from './module.js';
+// console.log(myObject.item1);
+// console.log(myObject.item2);
+// console.log(myObject.item3);

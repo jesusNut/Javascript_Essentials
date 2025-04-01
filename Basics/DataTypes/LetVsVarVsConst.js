@@ -1,7 +1,7 @@
 
 //? https://www.freecodecamp.org/news/var-let-and-const-whats-the-difference/
 
-//! Variables declared with var are in the function scope.
+//! Variables declared with var are in the global scope or function scopeBUT NOT BLOCKED SCOPED.
 //! Variables declared as let or const are in the block scope.
 
 function f1() {
@@ -30,11 +30,10 @@ if (" ") {
 
 console.log(data); //const, cannot be accessed outside of block scope
 
-//! Hoisting is allowed for var.
-//! Hoisting is NOT ALLOWED FOR let and const.
+//! Variables declared with var are hoisted and initialized with a default value of undefined. 
+//! Variables declared with let and const are also hoisted, but they are not initialized during hoisting. So we get reference error.
 
 /**================================================================================================
- *!    JavaScript only hoists declarations, not initializations. 
  *================================================================================================**/
 
 //example 1 with var
@@ -55,7 +54,6 @@ var star = "somedata";
 
 kdata = "abc";
 console.log(kdata); //Cannot access 'kdata' before initialization
-
 let kdata;
 
 //? 'CONST' DECLARATIONS MUST BE INITIALIZED.
@@ -80,7 +78,7 @@ const gaze = "abc";
 
 //const gaze = 'def'; //cannot redeclare block-scoped variable 'gaze'
 
-//! Redeclaration of all types of variables are allowed in case of var in the different scope.
+//! Redeclaration of all types of variables are allowed in case of different scope.
 
 let x = 100; //global scope
 

@@ -27,12 +27,12 @@ console.log("--------------------------");
 var i = 22;
 
 console.log(i);
-console.log(typeof(i))
+console.log(typeof(i)) //! first way to use typeOf operator
 
 i = "mahesh";
 
 console.log(i);
-console.log(typeof(i))
+console.log(typeof i) //! second way to use typeOf operator
 
 i = true;
 

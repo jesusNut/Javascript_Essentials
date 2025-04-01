@@ -12,6 +12,7 @@
 
 class Mobile {
   //while declaring the instance or static variables, no need to write var/let/const.
+  //! Using let/const/var will give error.
   //It is a good practice to declare variables. Otherwise we can directly write
   //instance variables inside constructors as well.
 
@@ -32,11 +33,11 @@ class Mobile {
   }
 
   getTime() {
-    return "the time now is : " + " 12PM"; //instance method with return type
+    return "12PM"; //instance method with return type
   }
 
   getUnlockPIN() {
-    console.log(this.getTime()); //calling an instance method inside another instance method.
+    console.log(`The current time is ${this.getTime()}`); //calling an instance method inside another instance method.
 
     //! MANDATORY TO USE 'this' keyword to access instance methods [Not like java] inside class.
 
@@ -45,6 +46,7 @@ class Mobile {
     //! MANDATORY TO USE 'this' keyword to access instance variables [Not like java] inside class.
 
     //! private variables can be accessed inside classes scope only & cant be accessed outside class scope.
+    //! Accessing outside will give undefined.
   }
 
   getAllData() {
@@ -130,7 +132,9 @@ pack1.printOne();
 pack1.printTwo();
 pack1.printThree();
 
-//todo : Arrow Function returns undefined when called from an object but
-//todo   returns a string when called from a class instance.
+//todo : Arrow Function returns undefined and does not refer 'this' in an object but
+//todo   works fine when written in a class or a Constructor function.
 
 //? https://stackoverflow.com/questions/73430164/arrow-function-returns-undefined-when-called-from-an-object-but-returns-a-string
+
+//

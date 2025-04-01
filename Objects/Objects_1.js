@@ -64,7 +64,7 @@ console.log(student.skills[0]);
 
 //! accessing PROPERTIES - way 3 [Object.keys() & Object.values() INBUILT METHOD]
 
-const keysArray = Object.keys(Object.keys(student)); //gives string[] of all keys
+const keysArray = Object.keys(student); //gives string[] of all keys
 console.log(keysArray); //[ 'id', 'firstName', 'lastName', 'age', 'doj', 'address', 'skills' ]
 
 const valuesArray = Object.values(student); //gives string[] of all values
@@ -203,7 +203,7 @@ for (let key in student5) {
   } else console.log(student5[key]);
 }
 
-//! OBJECT METHODS : writing functions inside objects 
+//! OBJECT METHODS : writing functions inside objects
 //! (can use traditional way or arrow functions or Modern ES6 Approach)
 
 let person = {
@@ -218,9 +218,9 @@ let person = {
     console.log(`hi beautiful..sexy..you gonna die one day ${data} hahaha...`);
   },
   //method written in Modern ES6 style
-  detailsPrinter(){
+  detailsPrinter() {
     console.log(`Details are : ${this.firstName} and ${this.lastName}`);
-  }
+  },
 };
 
 //accessing object methods
@@ -255,7 +255,7 @@ blocklist.forEach((objData) => {
 //! In an object method, 'this' refers to the current object.
 //! Methods like call(), apply(), and bind() can refer this to any object. [check from video links provided in notes]
 
-//! this KEYWORD IS NOT ALLOWED WITH ARROW FUNCTIONS.
+//! this KEYWORD IS NOT RESPECTED WITH ARROW FUNCTIONS in case of Objects.[But works fine as methods in classes/Constructor Functions]
 
 let dabba1 = {
   maindish: "rice",
@@ -267,6 +267,10 @@ let dabba1 = {
 };
 
 console.log(dabba1.eater("ankush")); //ankush is going to eat rice and salad today !!
+
+// Replace eater method with arrow function, and we will get :
+//ankush is going to eat undefined and undefined today !! - [while module: 'commonJs' in package.json]
+//Error- [while module: 'Module' in package.json]
 
 //! Assigning DYNAMIC VALUES & KEYS in an object.
 
@@ -285,3 +289,41 @@ let reportData = {
 console.log(reportData["macId"]); //check with empty string on line 4.
 console.log(reportData.testConfig); //!'some data' - right way to access dynamic key
 console.log(reportData.envProperty); //!undefined - wrong way to access dynamic key
+
+//! real time usage of dynamic VALUES AND KEYS.
+
+// we will getch an API and then extract values and keys dynamically
+
+async function doSomething(myurl) {
+  let response = await fetch(myurl, { method: "GET" });
+  let resinJSON = await response.json();
+  return resinJSON;
+}
+
+let resinJSON = await doSomething(
+  "https://run.mocky.io/v3/3896cf23-0d9e-43c6-ad63-2e9a87371ea9"
+);
+
+let myobj = {
+  [resinJSON['categories'][0]]: resinJSON.name,
+  [resinJSON['categories'][1]]: resinJSON.age,
+  [resinJSON['categories'][2]]: "Hogwarts",
+};
+
+
+console.log(myobj);
+
+//Sample data to be mocked in https://run.mocky.io/
+
+// {
+//   "name": "Murugan",
+//   "age": 99,
+//   "description": "A simple example JSON object.",
+//   "inStock": true,
+//   "categories": ["fullname", "HappyBday","study"]
+// }
+
+
+//output:
+
+//{ fullname: 'Murugan', HappyBday: 99, study: 'Hogwarts' }

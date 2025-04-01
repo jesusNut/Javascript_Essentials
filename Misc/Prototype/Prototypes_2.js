@@ -4,7 +4,7 @@
 //* the former is a property of a  constructor function,
 //* while the later is a property of a class instance.
 
-//! so use .__proto__ with objects and .prototype with constructor functions.
+//! ***** so use .__proto__ with objects and .prototype with constructor functions. *****
 
 //! //! EVERY OBJECT'S OR INSTANCE'S __PROTO__ PROPERTY POINTS TO PROTOTYPE OF ITS CONSTRUCTOR FUNCTION/CLASS
 
@@ -69,8 +69,6 @@ const obj2 = {
 console.log(obj2.namer); //undefined , as obj2 cannot access properties or methods of obj1
 
 // Steps to solve : set obj2's prototype to contain 'namer' property & 'greetings' method.
-//* Here, we have used .__proto__ with obj2 as its is an instance of Object class;
-//* as the same can be represented as "obj2= new Object({...})"
 
 console.log(obj2.__proto__ === Object.prototype); //true, as established in example 1
 
@@ -78,7 +76,23 @@ obj2.__proto__ = Object.create(obj1);
 
 obj2.greetings();
 
+console.log(Object.getPrototypeOf(obj2) === obj1); //false
+console.log(Object.getPrototypeOf(Object.getPrototypeOf(obj2)) === obj1);
+//true, indicates an intermediate layer of Object between obj1 and obj2
+
 //! Usage of Object.create() method:
 
 //* The Object.create() method creates a new object and
 //* allows you to specify an object that will be used as the new object's prototype.
+
+//! Differences Between the Two Approaches:
+
+// ---------------------------------------------------------------
+// | Approach                              | Behavior                  | Best Used When                                      |
+// |---------------------------------------|---------------------------|-----------------------------------------------------|
+// | obj2.__proto__ = Object.create(obj1); | obj2 has an intermediate  | You want a layer of isolation                      |
+// |                                       | object between it and obj1 | between obj2 and obj1                              |
+// |---------------------------------------|---------------------------|-----------------------------------------------------|
+// | obj2.__proto__ = obj1;                | obj2 directly inherits    | You want direct inheritance, and modifications     |
+// |                                       | from obj1                 | to obj1 should reflect in obj2                    |
+// ---------------------------------------------------------------

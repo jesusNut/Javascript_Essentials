@@ -28,6 +28,18 @@ console.log(modArray2);
 //     'a', 't'
 //   ]
 
+//! Using the split() method: - WAY 3 
+
+let myarr = myStr.split("");
+console.log(myarr);
+
+// [
+//   'A', 'b', 'h', 'i', 's',
+//   'h', 'e', 'k', ' ', 'i',
+//   's', ' ', 'g', 'r', 'e',
+//   'a', 't'
+// ]
+
 //! convert char array to string
 
 //array to string

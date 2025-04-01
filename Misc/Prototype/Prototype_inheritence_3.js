@@ -1,57 +1,56 @@
-//* How to implement inheritence using prototype concept before the ES6 classes concept.
+// //* How to implement inheritence using prototype concept before the ES6 classes concept.
 
-//! ***CONCEPT : Usage of call()
+// //! ***CONCEPT : Usage of call()
 
-let object1 = {
-  firstname: "Abhishek",
-  lastName: "Bhardwaj",
-  age: 99,
-};
+// let object1 = {
+//   firstname: "Abhishek",
+//   lastName: "Bhardwaj",
+//   age: 99,
+// };
 
-object1.printDetails = function (currentJob) {
-  console.log(
-    `${this.firstname} ${this.lastName} who is ${this.age} is a ${currentJob}`
-  );
-};
+// object1.printDetails = function (currentJob) {
+//   console.log(
+//     `${this.firstname} ${this.lastName} who is ${this.age} is a ${currentJob}`
+//   );
+// };
 
-object1.printDetails("tester");
+// object1.printDetails("tester");
 
-let object2 = {
-  firstname: "Kadam",
-  lastName: "Badana",
-  age: 999,
-};
+// let object2 = {
+//   firstname: "Kadam",
+//   lastName: "Badana",
+//   age: 999,
+// };
 
-object1.printDetails.call(object2, "yogi");
+// object1.printDetails.call(object2, "yogi");
 
-//! *** CONCEPT : Below is the way to inherit without using extends keyword of ES6 classes.
-//! This is called Prototypical Inheritence.
+// //! *** CONCEPT : Below is the way to inherit without using extends keyword of ES6 classes.
+// //! This is called Prototypical Inheritence.
 
-//* EXAMPLE 1:
+// //* EXAMPLE 1:
 
-//const function - behaving like base class
+// //const function - behaving like base class
 
-function Animal(legs) {
-  this.legs = legs;
-}
+// function Animal(legs) {
+//   this.legs = legs;
+// }
 
-Animal.prototype.walk = function () {
-  console.log("walking on " + this.legs + " legs");
-};
+// Animal.prototype.walk = function () {
+//   console.log("walking on " + this.legs + " legs");
+// };
 
-function Bird(legs) {
-  Animal.call(this, legs);
-}
+// function Bird(legs) {
+//   Animal.call(this, legs); //Run constructor of Animal on Bird instance and add all properties of Animal.
+// }
 
-// creating a child called 'Bird' which will inherit 'Animal' using prototype.
+// Bird.prototype = Object.create(Animal.prototype); 
+// //! needed to use 'walk' function with Bird instances
 
-Bird.prototype = Object.create(Animal.prototype);
+// const hen = new Bird(4);
 
-const hen = new Bird(4);
+// hen.walk(); //with line
 
-hen.walk(); //with line
-
-//* EXAMPLE 2 : 
+//* EXAMPLE 2 :
 
 //const function - behaving like base class
 
@@ -65,18 +64,19 @@ car.prototype.printDetails = function () {
   console.log(`${this.wheels}------${this.engine}----${this.color}`);
 };
 
-// creating a child 'Honda' which will inherit 'car' using prototype.
 
 //* Step 1 : Inherit every property and method from within car constructor function.
 
 let Honda = function (wheels, engine, color, price) {
-  car.call(this, wheels, engine, color);
+  car.call(this, wheels, engine, color); //! calls car constructor on Honda instance and add all car properties to Honda instance
   this.price = price;
 };
 
 //* Step 2 : Inherit 'printDetails' method from within car prototype.
 
-//Honda.prototype = Object.create(car.prototype); //! way 1 : create an object holding 'car.prototype' , later assigned to prototype of Honda.
+Honda.prototype = Object.create(car.prototype); 
+//! Required to call printDetails() on Honda instance
+
 const hondaObj1 = new Honda(8, "500cc", "red", 999.99); //first object
 const hondaObj2 = new Honda(88, "900cc", "blue", 777.77); //second object
 
@@ -84,9 +84,15 @@ const hondaObj2 = new Honda(88, "900cc", "blue", 777.77); //second object
 
 console.log(hondaObj1.__proto__ === Honda.prototype); //true
 console.log(hondaObj2.__proto__ === Honda.prototype); //true
+console.log(Object.getPrototypeOf(hondaObj1) === Honda.prototype);
+console.log(Object.getPrototypeOf(hondaObj2) === Honda.prototype);
 
-hondaObj1.__proto__ = Object.create(car.prototype); //! way 2
-hondaObj2.__proto__ = Object.create(car.prototype); //! way 2
+console.log(Object.getPrototypeOf(Object.getPrototypeOf(hondaObj2))=== car.prototype);//true
+console.log(Object.getPrototypeOf(hondaObj1.__proto__)=== car.prototype); //true
+console.log(Object.getPrototypeOf(hondaObj2.__proto__)=== car.prototype);//true
+
+// hondaObj1.__proto__ = Object.create(car.prototype); //! way 2
+// hondaObj2.__proto__ = Object.create(car.prototype); //! way 2
 
 hondaObj1.printDetails();
 hondaObj2.printDetails();

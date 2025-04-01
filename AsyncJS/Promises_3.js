@@ -102,6 +102,63 @@ function printResults() {
 //   .then(() =>teardown())
 //   .then(()=>printResults())
 
+//! The above code is equivalent to below:
+
+function chainer() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log("I am completing the set up..");
+      resolve(() => {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            console.log("I am performing something..");
+            resolve(() => {
+              return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                  console.log("I am Quitting..");
+                  resolve(() => {
+                    return new Promise((resolve, reject) => {
+                      setTimeout(() => {
+                        console.log("I am Printing results..");
+                        resolve();
+                      }, 4000);
+                    });
+                  });
+                }, 2000);
+              });
+            });
+          }, 4000);
+        });
+      });
+    }, 6000);
+  });
+}
+
+//=============
+// way 1:
+//=============
+
+// chainer()
+//   .then((func) => {
+//     return func();
+//   })
+//   .then((func) => {
+//     return func();
+//   })
+//   .then((func) => {
+//     func();
+//   });
+
+//=============
+// way 2:
+//=============
+
+// chainer()
+//   .then((func) => func())
+//   .then((func) => func())
+//   .then((func) => func());
+
+
 //*   Example of Async code 2:
 
 //* Problem :

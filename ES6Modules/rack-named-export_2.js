@@ -49,4 +49,7 @@ export {
 
     bodyName,socks,Utils1,Utils2,StringManipulator
 
-}
+} 
+
+//! This is not creating an object or using object shorthand. 
+//! This is ES6 named exports in JavaScript modules.

@@ -9,7 +9,8 @@
 
 //if you want to use all the exported items:
 
-//  import {bodyName,socks,Utils1,Utils2,StringManipulator} from './rack-named-export_1.js'
+//  import {bodyName,socks,Utils1,Utils2,StringManipulator} from './rack-named-export_1.js' //! This not object destructring !!! 
+                                                                              //!This is a fixed syntax for importing named exports.
 
 // console.log(bodyName);
 // console.log(socks);
@@ -76,12 +77,12 @@
 
 //lets assume I want to use bodyName, socks items only.
 
-import { bodyName as Subject, socks as Mozza} from './rack-named-export_1.js'
+// import { bodyName as Subject, socks as Mozza} from './rack-named-export_1.js'
 
-console.log(Subject);
-console.log(Mozza);
+// console.log(Subject);
+// console.log(Mozza);
 
-console.log('----------------------------------------------');
+// console.log('----------------------------------------------');
 
 /**================================================================================================
 *?    Importing for default exports
@@ -91,12 +92,12 @@ console.log('----------------------------------------------');
 
 //! 2.  Name of the exported items and imported items CAN BE DIFFERENT in case of DEFAULT EXPORTS.
 
-import anyname from './rack-default-export_3.js' //importing for default export
-import { Utils1, StringManipulator } from './rack-default-export_3.js' //importing for named exports
-//since the above imports are for named exports, so names must be same while exporting and importing
+// import anyname from './rack-default-export_3.js' //importing for default export
+// import { Utils1, StringManipulator } from './rack-default-export_3.js' //importing for named exports
+// //since the above imports are for named exports, so names must be same while exporting and importing
 
-console.log(anyname);
-Utils1();
+// console.log(anyname);
+// Utils1();
 
-const obj4 = new StringManipulator('I am Kaani Mojhi...');
-console.log(obj4.upperCaseTransformer());
+// const obj4 = new StringManipulator('I am Kaani Mojhi...');
+// console.log(obj4.upperCaseTransformer());

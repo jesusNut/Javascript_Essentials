@@ -13,12 +13,13 @@
 //! Convention 1: The name of a constructor function STARTS WITH A CAPITAL LETTER like Person, Document, etc.
 //! Convention 2: A constructor function should be called only with the new operator.
 //! Dont use arrow functions to create constructor functions as we can't use this keyword inside it.
+//! but inside a traditionally written constructor function, arrow function can be used with 'this'.
 
 //------------------------------------------------------------------------------------------------------------
 
 //* ############## Using the "this" Keyword #####################
 
-//! When the 'this' keyword is used in a constructor function, it refers to the newly created object.
+//! When the 'this' keyword is used in a constructor function, it refers to newly created object instance that is being constructed.
 
 //------------------------------------------------------------------------------------------------------------
 
@@ -26,9 +27,12 @@
 
 function User1() {
   this.name = 'Alien';
-  this.age = 9999;
+  this.age = 9999; //! semicolon is mandatory.
   this.coward = true;
-  this.printDetails = function () {
+  // this.printDetails = function () { //! methods needs to be created with this keyword only.
+  //   console.log(`Details for this alien is ${this.name}---${this.age}---${this.coward}`);
+  // }
+  this.printDetails =  () =>{ //! inside a traditionally written constructor function, arrow function can be used with 'this'.
     console.log(`Details for this alien is ${this.name}---${this.age}---${this.coward}`);
   }
 
@@ -51,7 +55,7 @@ user3.printDetails();
 //* ############## CREATING A CONSTRUCTOR FUNCTION  WITH PARAMETERS #####################
 
 
-//! 👻👻PLEASE NOTE👻👻: here iataCode,iataHanger,fleetSize behaves like instance vraibles,
+//! 👻👻PLEASE NOTE👻👻: here iataCode,iataHanger,fleetSize behaves like instance varibles,
 //! i.e. separate copy for each created object as per parameter values ALTHOUGH not explicitly declared.
 
 let MyAirlines = function (flightCode, headquaters, totalFlights) {

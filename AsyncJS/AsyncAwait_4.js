@@ -1,16 +1,26 @@
 //*  “async/await” is used to consume promises in a more comfortable fashion.
 
 //! ASYNC : async keyword is used before a function.
-//! async makes a function return a Promise mandatorily which can then be consumed using then() & catch().
+//! The async keyword is placed before a function declaration.
+//! It tells JavaScript that the function will contain asynchronous operations.
+//! An async function always returns a Promise, even if you don't explicitly return a Promise-
+//! if you return a regular value, it's wrapped in a resolved Promise.
 
 //******* code snippet 1 *********
 async function getData(data) {
   return data.toUpperCase();
 }
 
+//******** consuming async function Way 1 using then()***********
+
 // getData("abhishek").then((data) => {
 //   console.log(data);
 // });
+
+//******** consuming async function Way 2 using await ***********
+
+// let res = await getData('abhishek');
+// console.log(res);
 
 //******* code snippet 2 explicity returning a promise *********
 async function getData(data) {
@@ -19,15 +29,31 @@ async function getData(data) {
   });
 }
 
-// getData("abhishek").then((data) => {
-//   console.log(data);
-// });
+//******** consuming async function Way 1 using then()***********
 
-//* Code 1 and code 2 are exactly the same.
+getData("abhishek").then((data) => {
+  console.log(data);
+});
+
+//******** consuming async function Way 2 using await ***********
+const res = await getData("abhishek");
+console.log(res);
+
+//* Code snippets 1 and code 2 are exactly the same.
 
 //! AWAIT : THE AWAIT KEYWORD CAN ONLY BE USED INSIDE AN ASYNC FUNCTION OR ON TOP LEVEL OF A MODULE.
 //! https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await#top_level_await
 //! The keyword await makes JavaScript wait until that promise settles (resolves or reject) and returns its result.
+
+//! resolve(value):
+// When you call resolve(value) inside the Promise's executor function, you are signaling that the Promise has been fulfilled.
+// The value you pass to resolve() becomes the resolved value of the Promise.
+
+//! await promisename:
+// When you use await promisename, the await expression will return the value that was passed to resolve().
+
+//! promisename.then(callback):
+// When you use .then(callback) the callback function will receive the value that was passed to resolve().
 
 //* Example 1:
 
@@ -80,6 +106,9 @@ async function kitchen() {
   console.log("A");
   console.log("B");
   console.log("C");
+  console.log("doing the dishes");
+  console.log("cleaning the tables");
+  console.log("taking orders");
 
   await toppings_choice();
 
@@ -91,19 +120,29 @@ async function kitchen() {
 
 kitchen();
 
-console.log("doing the dishes")
-console.log("cleaning the tables")
-console.log("taking orders")
-
-
 //Expected result :
 
 // A
 // B
 // C
-// doing the dishes   
+// doing the dishes
 // cleaning the tables
-// taking orders      
+// taking orders
 // which topping would you love?
 // D
 // E
+
+//! Undestanding fetch() API in NodeJS
+
+async function checkAPI(myurl) {
+  console.log(`The url to be checked is ${myurl}`);
+  let response = await fetch(myurl, { method: "GET" });
+  console.log(response.status === 202);
+  let responeInJSON = await response.json();
+  console.log(
+    responeInJSON.message === "Product details retrieved successfully."
+  );
+  console.log(`API has been checked`);
+}
+
+checkAPI("https://run.mocky.io/v3/3bbc665a-464a-456e-b016-df8c273093e4");

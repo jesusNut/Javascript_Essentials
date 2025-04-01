@@ -19,7 +19,7 @@ const fruits = [
 //using predicates
 
 const newLocal = fruits.find((data) => data === "drgonfruit");
-console.log("🚀 ~ newLocal:", mySum);
+console.log("🚀 ~ newLocal:", newLocal);
 
 //*  Sorting functions
 //!  SORT and REVERSE changes the actual array
@@ -113,7 +113,7 @@ console.log(splicedArray1);
 console.log(fruitsSplicer1);
 
 //* SLICE
-//! SPLICE - No changes in actual array
+//! SLLICE - No changes in actual array
 
 const fruitsSlicer = [
   "mango",
@@ -237,9 +237,9 @@ console.log(finalResultObject);
 //     '8': 'pizza'
 //   }
 
-//* .KEYS - .keys() method : widely used in for-of loop
+//*<array>.KEYS - .keys() method : widely used in for-of loop
 
-//! The Javascript array.keys() method is used to return
+//! The Javascript <array>.keys() method is used to return
 //! a new array iterator which CONTAINS THE KEYS FOR EACH INDEX in the given input array.
 
 let demoArray = [

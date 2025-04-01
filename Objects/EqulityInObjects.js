@@ -23,18 +23,37 @@ console.log(c === b); //true (both c and b have same values and same type)
 
 //==========================================================================
 
-let obj1 = { name: "Dionysia", age: 29 };
-let obj2 = { name: "Dionysia", age: 29 };
+//! Yes, when comparing the references of two different objects, both == and === will behave the same in JavaScript.
+//! They will both return false because they are comparing the memory addresses, which will be different for distinct objects.
 
-console.log(obj1 === obj2); // false (not the sme instance i.e. address)
-console.log(obj1 == obj2); //  false (not the sme instance i.e. address)
+const obj1 = { name: "Alice", age: 30 };
+const obj2 = { name: "Alice", age: 30 };
+const obj3 = obj1; // obj3 now refers to the same object as obj1
 
-let obj3 = { name: "Dionysia", age: 29 };
+console.log(obj1 == obj2);   // Output: false (different memory locations)
+console.log(obj1 === obj2);  // Output: false (different memory locations)
+console.log(obj1 == obj3);   // Output: true (same memory location)
+console.log(obj1 === obj3);  // Output: true (same memory location)
 
-let obj4 = obj3;
+//==========================================================================
 
-console.log(obj3 === obj4); // true
-console.log(obj3 == obj4); // true
+let tdata1 = {
+  data1: "abc",
+};
+
+let tdata2 = tdata1;
+
+tdata1 = {
+  data2: "def",
+};
+
+//! This above line creates a new, different object  and assigns it to the variable tdata1.
+//! tdata2, however, still holds a reference to the original object { data1: 'abc' }
+
+console.log(tdata1); //{ data2: 'def' }
+console.log(tdata2); //{ data1: 'abc' }
+
+
 
 console.log(`==========================================================`);
 
@@ -42,9 +61,9 @@ console.log(`==========================================================`);
 
 //!👉 We should always compare the properties and values inside the objects and not their reference/address.
 
-//* WAY 1::: USING JSON.stringify() - If KEYS are not in the same order in both objects, the result will be false.
+//* WAY 1::: USING JSON.stringify() - If PROPERTIES are not IDENTICAL in both objects, the result will be false.
 
-//**** scenario 1 : data1 and data2 are identically same - means all properties/keys and values in same order
+//**** scenario 1 : data1 and data2 are identically same - means all properties/keys and values in same order.
 
 const data1 = {
   products: [
@@ -96,7 +115,7 @@ if (JSON.stringify(data1) === JSON.stringify(data2)) {
   console.log(`Object is not identical`);
 }
 
-//**** scenario 2 : data3 and data4 are identically NOT same - all keys are present but in different order
+//**** scenario 2 : data3 and data4 are identically NOT same - all keys are present but in different order. So we will get FALSe always
 
 const data3 = {
   products: [

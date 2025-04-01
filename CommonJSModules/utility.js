@@ -45,4 +45,4 @@ class StringManipulator{
 
 //todo ****************** exporting items as common-js module *******************
 
-module.exports = {bodyName,socks,Utils1,Utils2,StringManipulator};
+module.exports = {bodyName,socks,Utils1,Utils2,StringManipulator}; //! Object shorthand notation

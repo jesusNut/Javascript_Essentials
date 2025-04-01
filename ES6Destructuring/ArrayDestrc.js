@@ -3,6 +3,10 @@
 //? https://www.youtube.com/watch?v=XIYJhGEmsYc&list=PL699Xf-_ilW6kwrOg4Wm87ZJ-idHubBrG&index=15
 //? https://www.youtube.com/watch?v=2RDwNt35whs
 
+//=======================================================================
+//! Syntax: Uses curly braces [] to extract values from an array.
+//=======================================================================
+
 let book = ["Abhishek the great tester", 500, "$999.99"];
 
 //traditional way of accessing elements of an array
@@ -51,3 +55,12 @@ console.log(magPages);
 console.log(magPrice);
 console.log(magPub);
 console.log(magAddr);
+
+//Example 4 : If I directy want to extrcat 3rd element from array.
+
+const numbers = [1, 2, 3, 4, 5];
+const [,,third] = numbers;
+
+console.log(third); //3
+
+

@@ -13,7 +13,7 @@ console.log(parsedValue);
 //{ name: 'Sammy', email: 'sammy@example.com', plan: 'Pro' }
 //! NOTICE THAT QUOTE FROM KEYS NOW DISAPPEARS.
 
-//* to verify if 'parsedValue' contains an object after conversion.
+//* to verify if 'parsedValue' contains an JS object after conversion.
 
 console.log(parsedValue.constructor); //[Function: Object]
 

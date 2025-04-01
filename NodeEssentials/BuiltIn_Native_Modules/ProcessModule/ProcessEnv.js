@@ -51,16 +51,16 @@
 // console.log(myProcessEnvData.env.USERNAME)
 // console.log(myProcessEnvData.env['TERM_PROGRAM'])
 
-//! setting a custom env variable in process.env using terminal.
+//! setting a custom env variable in process.env using terminal (command Prompt)
 
-//* set RUNENV = DEV //run this in terminal
+//* set RUNENV=DEV //run this in terminal
 
 //! setting a custom env variable in process.env using terminal and run this file in same command
 //! Notice that there is no space between the value of each environment variable and the && symbols.
 
 //* set RUNENV=DEV&& node processEnv.js
 
-//! accessing the custom environment data in process.env file [which we set above using termnal]
+//! accessing the custom environment data in process.env file [which we set above using terminal]
 
 //console.log(myProcessEnvData.env['RUNENV']) //DEV
 

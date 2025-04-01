@@ -1,7 +1,6 @@
 //! The static keyword defines a static method or variable for a class,
 //! or a static initialization block.
 //! Static methods are often utility functions.
-//! Static properties are any data you don't need to be replicated across instances.
 //! Static members (variables and methods) can be private or public.
 
 //* Accessing static memebrs outside of the class.

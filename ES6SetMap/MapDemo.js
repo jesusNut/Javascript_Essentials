@@ -12,7 +12,7 @@
 
 //1. A key of an object must be a string or a symbol, you cannot use an object as a key.
 
-//2. An object does not have a property that represents the size of the map.
+//2. An object does not have a property that represents the size of the Object.
 
 //* creating a Map and assigning value : WAY 1
 

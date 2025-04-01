@@ -1,6 +1,7 @@
 //* Set :
 //! ES6 Set stores A COLLECTION OF UNIQUE VALUES OF ANY TYPE.
-//! Insertion order is preserved.
+//! No duplicates allowed.[Like JAVA]
+//! Insertion order is preserved.[In Java, use - LinkedHashSet]
 //! CANNOT USE INDEXES TO ACCESS ELEMENTS UNLIKE ARRAYS.
 
 //? https://www.javascripttutorial.net/es6/javascript-set/
@@ -30,7 +31,7 @@ console.log(setData2); //Set(6) { 1, 2, 3, 4, 5, 'abc' }
 //* DELETE - delete(value) : deletes a single element specified by the value.
 //* Returns true or false.
 
-console.log(setData2.delete("abc")); //delete() returns false as 'abc' is present in set.
+console.log(setData2.delete("abc")); //delete() returns true as 'abc' is present in set.
 
 console.log(setData2); //Set(5) { 1, 2, 3, 4, 5 }
 

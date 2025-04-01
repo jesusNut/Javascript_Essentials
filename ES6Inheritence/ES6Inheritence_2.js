@@ -44,7 +44,7 @@ oplus.makecall();
 // }
 
 //! BUT, JAVASCRIPT REQUIRES THE CHILD CLASS TO CALL SUPER() EXPLICITLY IF IT HAS A EXPLICITLY WRITTEN CONSTRUCTOR.
-
+//*  the super() call must be the first statement within the derived class's constructor.
 class Oppo extends Mobile {
   constructor(num) {
     //we have to make super call to base class explicitly, otherwise errors.

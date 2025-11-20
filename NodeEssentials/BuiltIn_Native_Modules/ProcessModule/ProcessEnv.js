@@ -55,6 +55,11 @@
 
 //* set RUNENV=DEV //run this in terminal
 
+//! verify the same in command prompt whether RUNENV is properly assigned with value <value> or not.
+
+//* echo %RUNENV% //o/p- DEV
+
+
 //! setting a custom env variable in process.env using terminal and run this file in same command
 //! Notice that there is no space between the value of each environment variable and the && symbols.
 
@@ -107,5 +112,16 @@
 //     }
 //   }
   
+//!🥋🥋 On logging process.env on console, I am NOT able to see RUNENV as a property BUT I am able to
+//! access it as 'console.log(myProcessEnvData.env['RUNENV'])'  getting 'DEV'
+
+//* Reason:
+// This is expected.
+// Even if the variable doesn’t appear explicitly when you log the whole process.env object, you can still access it directly via process.env.<property>.
+// Node doesn't always show all environment variables when you console.log(process.env) — especially on Windows, due to how it caches or formats the object.
+
+//To verify if RUNENV actually exists as a property in Process.env use :
+
+//* console.log(Object.keys(process.env).includes('RUNENV')); //should give true
 
 

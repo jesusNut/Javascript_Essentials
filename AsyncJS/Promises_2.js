@@ -40,10 +40,12 @@
 
 // If you return a regular value (string, number, object, etc.) from the then() callback, that value is wrapped in a new resolved Promise.
 // The next then() in the chain will receive this resolved Promise's value as its argument.
+
 // Returning a Promise:
 
 // If you return a Promise from the then() callback, the next then() in the chain will wait for that returned Promise to resolve or reject.
 // The next then() will receive the resolved value of the returned Promise.
+
 // Returning Nothing (or undefined):
 
 // If you don't explicitly return anything (or return undefined), the next then() will receive a resolved Promise with the value undefined.

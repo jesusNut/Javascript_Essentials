@@ -22,9 +22,7 @@
 
 //----------------------------- EXAMPLE 1 --------------------------------------------------
 
-data = 10; // Assignment
-console.log(data); // Using variable before declaration. //10
-var data; // Declaration
+ 
 
 //Equivalent for above:
 
@@ -58,8 +56,8 @@ var data1 = 10;
 //----------------------------- EXAMPLE 1 --------------------------------------------------
 
 data = 10;
-console.log(data); //! Ref error.
-let data;
+console.log(data2); //! Ref error.
+let data2;
 
 //equivalent:
 
@@ -75,8 +73,8 @@ let data;
 
 //----------------------------- EXAMPLE 2 --------------------------------------------------
 
-console.log(data); //! Ref error.
-let data = 10;
+console.log(data3); //! Ref error.
+let data3 = 10;
 
 //equivalent:
 

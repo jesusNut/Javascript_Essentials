@@ -54,24 +54,27 @@ const myObj = new ClassWithStaticFields();
 class StaticMethodCall {
   static staticProperty = "static property";
 
-  //! USE this Keyword  to call a static method or property within another static method of the same class.
+  //! USE this Keyword  to call a static method or property within another static method of the same class OR use CLASSNAME.
 
   //! this refers to CLASS itself when used inside a static method. [not like JAVA where usage of this and super is not allowed in static context]
   //! this refers to the - object calling the instance method in case of instance methods. [same like java]
 
   static staticMethod() {
-    return `Static method and ${this.staticProperty} has been called`;
+    console.log(
+      `Static method and ${StaticMethodCall.staticProperty} has been called`
+    );
+    console.log(`Static method and ${this.staticProperty} has been called`);
   }
   static anotherStaticMethod() {
-    return `${this.staticMethod()} from another static method`;
+    StaticMethodCall.staticMethod();
+    this.staticMethod();
   }
 }
 
-console.log(StaticMethodCall.staticMethod());
+StaticMethodCall.staticMethod();
 // 'Static method and static property has been called'
 
-console.log(StaticMethodCall.anotherStaticMethod());
+StaticMethodCall.anotherStaticMethod();
 // 'Static method and static property has been called from another static method'
-
 
 //! A STATIC METHOD CANNOT ACCESS A CLASS’S INSTANCE VARIABLES AND INSTANCE METHODS !!

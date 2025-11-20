@@ -19,9 +19,33 @@ console.log(typeof myobj1); //object
 
 // creating objects with properties
 
-//! keys are always String and no need to put them in quotes.
+//! JavaScript object keys can only be strings or symbols. 
+//! If you use a number/boolean/null/undefined as a key, it will be automatically converted to a string.
+
+// let data = {
+//   2: "ameer",
+//   null: "kumar",
+//   undefined : "Mohit",
+//   true : "kbc"
+// };
+
+// console.log(data[null]);
+// console.log(data['null']);
+// console.log(data[undefined]);
+// console.log(data['undefined']);
+// console.log(data[true]);
+// console.log(data['true']);
+
+//output:
+// kumar
+// kumar
+// Mohit
+// Mohit
+// kbc
+// kbc
+
 //! value can be of any data type.
-//! key value pair needs to be separted using colons
+//! key value pair needs to be separted using colons.
 
 let student = {
   id: 22,

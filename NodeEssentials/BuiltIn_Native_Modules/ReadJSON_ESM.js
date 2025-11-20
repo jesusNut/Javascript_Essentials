@@ -19,8 +19,8 @@
 
 
 async function readJSON() {
-  const module = await import("./Content.json", { with: { type: "json" } });
-  return module.default;
+  const data = await import("./Content.json", { with: { type: "json" } });
+  return data.default;
 }
 
 let data = await readJSON();

@@ -40,7 +40,6 @@ MyAirlines.prototype.addFlights = function (newFlights) {
 //* The above created function 'addFlights' will be now available for all the Objects getting created using
 //* MyAirlines constructor function.
 
-//! This concept is called PROTOTYPICAL INHERITENCE.
 
 const jetAirways = new MyAirlines("Jey airways", "Bihar", -99); //created object
 

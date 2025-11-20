@@ -1,4 +1,5 @@
-//! Object shorthand notation is a concise way to create object properties when the property name matches the variable name.
+//! Object shorthand notation is a concise way to create object properties when 
+//! => Property name matches the variable name which holds its value.
 //! Let's break it down with a simple example:
 
 const fname = "Alice";

@@ -1,8 +1,8 @@
 //! Difference & Relation between ".__proto__" and ".prototype"?
 
-//* In reality, the only true difference between .prototype and __proto__ is that
-//* the former is a property of a  constructor function,
-//* while the later is a property of a class instance.
+//* In reality, the only true difference between .prototype and __proto__ is that :
+//* 'prototype' is a property of a  constructor function,
+//* while '__proto__' is a property of a class instance.
 
 //! ***** so use .__proto__ with objects and .prototype with constructor functions. *****
 

@@ -1,4 +1,4 @@
-//* super keyword used to access  Prototype properties and methods on BASE CLASS PROTOTYPE.
+//* super keyword used to access  static properties and methods on BASE CLASS PROTOTYPE.
 //* super() & super(args) is used for calling parent class constructors from child class.
 //* super CAN be used to access parent instance methods.
 //! super cannot be used to access instance variables of parent class, in child class.

@@ -1,6 +1,11 @@
 //* Inheritence when the derived class has a constructor explicitly written in it.
 
-//! JAVASCRIPT DOES NOT REQUIRES THE CHILD CLASS TO CALL SUPER() EXPLICITLY IF IT DOES NOT HAVE A EXPLICTLY WRITTEN CONSTRUCTOR.
+/**========================================================================
+ **    ☠️☠️ Concept of  Implicit Constructor Inheritance in JS/TS ☠️☠️
+ *========================================================================**/
+
+//! 🎃🎃🎃 In JS and TS, if a subclass doesn't define its own constructor,
+//! it inherits the superclass's constructor automatically. 🎃🎃🎃
 
 class Mobile {
   num;
@@ -27,8 +32,9 @@ class Oneplus extends Mobile {}
 
 const oplus = new Oneplus(7777777777);
 
-//* Below statements will work fine because :
+//* 🎃🎃🎃 Below statements will work fine without any constructor 🎃🎃🎃 because :
 //* We have not explicitly written any constructor in derived class - Oneplus.
+//! In Java, same concept gives error as we have to explicitly write a Constructor with a super() call with one arg.
 
 console.log(oplus.num);
 oplus.makeSMS();

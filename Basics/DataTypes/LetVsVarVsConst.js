@@ -1,8 +1,14 @@
 
 //? https://www.freecodecamp.org/news/var-let-and-const-whats-the-difference/
 
-//! Variables declared with var are in the global scope or function scopeBUT NOT BLOCKED SCOPED.
+//! Variables declared with var are in the global scope or function scope BUT NOT BLOCKED SCOPED.
 //! Variables declared as let or const are in the block scope.
+
+// | Keyword | Global Scope | Function Scope | Block Scope |
+// |---------|--------------|----------------|-------------|
+// | var     | Yes          | Yes            | No          |
+// | let     | Yes          | Yes            | Yes         |
+// | const   | Yes          | Yes            | Yes         |
 
 function f1() {
   var a = 10;
@@ -61,8 +67,8 @@ let kdata;
 //! Reassigning of value allowed for let and var.
 //! Reassigning of value NOT ALLOWED for const as const are used for constants.
 
-//! Redeclaration of variables are allowed in case of var in the same scope.
-//! Redeclaration of variables are not allowed in case of let and const in same scope.
+//! Redeclaration of variables are ALLOWED in case of var IN SAME SCOPE ALSO.
+//! Redeclaration of variables are NOT ALLOWED in case of let and const IN SAME SCOPE.
 
 var sage = "abc";
 

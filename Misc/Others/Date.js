@@ -2,14 +2,13 @@
 
 //! date object aways helds both date and time.
 //! the standard time fixed as starting point of reference for date & time in JS is:
-//! Jan 1st of 1970 UTC+0.
+//! Jan 1st of 1970 UTC+0.[called unix Epoch]
 
-//* creating a Date object - for CURRENT date-time and its important methods
+//* creating a Date object
 
-let myDate = new Date();
-
-// How many milliseconds has been completed from Jan 1st of 1970 UTC+0. to the date & time
-// fetched above.
+let myDate = new Date(); //! Creates a Date object with the current date and time.
+let mydate1 = new Date(0) //! Creates a Date object from the number of milliseconds since the Unix epoch (January 1, 1970, 00:00:00 UTC).
+//console.log(mydate1); //1970-01-01T00:00:00.000Z
 
 console.log(myDate); //2023-07-29T20:14:43.525Z which is a UTC time
 console.log(myDate.toUTCString()); //Sat, 29 Jul 2023 20:14:43 GMT

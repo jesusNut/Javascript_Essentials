@@ -14,7 +14,9 @@ class Mobile {
   //while declaring the instance or static variables, no need to write var/let/const.
   //! Using let/const/var will give error.
   //It is a good practice to declare variables. Otherwise we can directly write
-  //instance variables inside constructors as well.
+  //instance variables inside constructors as well until they are all public.
+  //Private variables must be explictly written in the enclosing class or we will get error as below.
+  //ERROR: 'Private field '#<name>' must be declared in an enclosing class.'
 
   //? DECLARING VARIABLES:
 
@@ -136,5 +138,3 @@ pack1.printThree();
 //todo   works fine when written in a class or a Constructor function.
 
 //? https://stackoverflow.com/questions/73430164/arrow-function-returns-undefined-when-called-from-an-object-but-returns-a-string
-
-//

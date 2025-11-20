@@ -13,7 +13,7 @@ function createPerson(firstName, lastName) {
       firstName: firstName,
       lastName: lastName,
       getFullName() {
-        return firstName + ' ' + lastName;
+        return this.firstName + ' ' + this.lastName;
       },
     };
   }

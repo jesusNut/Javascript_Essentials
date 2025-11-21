@@ -60,7 +60,7 @@ console.log(newLocal2);
 
 //https://www.w3schools.com/jsref/jsref_reduce.asp
 
-//PROBLEM : print sum of all data in array which is even
+//PROBLEM 1 : print sum of all data in array which is even
 
 const numData3 = [22, 33, 44, 55, 66, 77, 88, 99];
 
@@ -72,7 +72,7 @@ const mySum = numData3
 
 console.log(mySum);
 
-//print sum of all data in array which is odd and and initial value of 100 as well
+//PROBLEM 2: print sum of all data in array which is odd and and initial value of 100 as well
 
 const numData4 = [22, 33, 44, 55, 66, 77, 88, 99];
 
@@ -83,6 +83,26 @@ const mySum1 = numData4
   }, 100);
 
 console.log(mySum1);
+
+//PROBLEM 3: Create an object out of an array in below format:
+
+// {
+//   '0': 'Mohneesh',
+//   '1': 'Visheesh',
+//   '2': 'Murali',
+//   '3': 'Padmanabhan',
+//   '4': 'Tillotama'
+// }
+
+const names = ["Mohneesh", "Visheesh", "Murali", "Padmanabhan", "Tillotama"];
+
+let resObj = names.reduce((a, b, curr) => {
+  a[curr] = b;
+  return a;
+}, {});
+
+console.log(resObj);
+
 
 //* SPLICE
 //! SPLICE - Changing actual array

@@ -76,3 +76,20 @@ console.log(company);
 console.log(dealership); //! **** this gives error ****
 console.log(dealerName);
 console.log(dealerAdress);
+
+// Example 4:
+
+let student = {
+  name: "Rahul",
+  age: 22,
+  course: "Computer Science",
+  marks: 88,
+  isPassed: true
+};
+
+
+//I want to extract only course and marks.
+
+let {course, marks} = student;
+console.log(course);
+console.log(marks);

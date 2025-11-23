@@ -67,6 +67,11 @@ console.log(setData3); //Set(8) { 11, 22, 33, 44, 55, 66, 77, 88 }
 console.log(setData3.has(99)); //false
 console.log(setData3.has(77)); //true
 
+//* 💀 Adding DUPLICATE values in a set. 💀
+
+//! When you try to add a value that’s already inside, it simply does not add it again.
+//!🫣🫣🫣 No error, no exception — it just ignores it🫣🫣🫣
+
 
 //* VALUES, KEYS AND ENTRIES
 
@@ -77,5 +82,28 @@ console.log(setData3.has(77)); //true
 //! KEYS and ENTRIES in case of ARRAY will hold:
 //! iterable of indexes and iterable of [index, value] respectively.
 //! NOTE THE DIFFERENCE.
+
+//* ITERATING SETS
+
+//! 💀 You cannot use a normal for-loop directly on a Set because Set is not index-based.
+
+let myset = new Set();
+
+myset.add(10);
+myset.add(20);
+myset.add(30);
+myset.add(40);
+myset.add(50);
+myset.add(40);
+
+
+//Way 1: 
+
+for (let item of myset) {
+  console.log(item);
+}
+
+//Way 2:
+myset.forEach(item=> console.log(item));
 
 

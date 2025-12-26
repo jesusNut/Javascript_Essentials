@@ -35,7 +35,7 @@ function printResults() {
 
 //* Solving the sequence problem using PROMISE concept.
 
-//* Redefining functions with promise:
+//* Redefining functions with promise and then returning those promises:
 
 function setUp() {
   return new Promise((resolve, reject) => {
@@ -65,10 +65,15 @@ function teardown() {
 }
 
 function printResults() {
-  setTimeout(() => {
-    console.log("I am Printing results..");
-  }, 1000);
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      console.log("I am Printing results..");
+      resolve();
+    }, 1000);
+  });
 }
+ 
+
 
 //* Consuming promise:
 
@@ -217,4 +222,6 @@ function printer(data) {
 //   .then(() => printer("Starting car"))
 //   .then(() => printer("Driving car"))
 //   .then(() => printer("Stopping car"));
+
+
 

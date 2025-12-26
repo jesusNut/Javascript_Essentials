@@ -8,6 +8,10 @@
 
 //! So, JS itself is synchronous & code when run in NodeJS is asynchronus in nature.
 
+//todo : JavaScript itself is synchronous and single-threaded. 
+//todo : Asynchronous behavior is enabled by the runtime environment (browser / Node.js) via APIs like fetch etc.
+//todo : JavaScript handles the results using callbacks, promises, and async/await.
+
 
 
 //If there is an async process in a function,
@@ -28,7 +32,7 @@
 
 //* This can be done using 3 ways :
 
-//? 1. Callback functions.
+//? 1. Callbacks.
 //? 2. Promise
 //? 3. Async-await
 
@@ -105,7 +109,49 @@ function printResults() {
 //   });
 // });
 
-//! This gives rise to PYRAMID OF DOOM or CALLBACK HELL if there are so many callbacks.
+//*OR
+
+// setUp(function setupCallback() {
+//   performer(function performerCallback() {
+//     teardown(function teardownCallback() {
+//       printResults();
+//     });
+//   });
+// });
+
+
+//! 🏁🏁🏁  EXPLANATION OF ABOVE CODE 🏁🏁🏁 ==========================================================================
+
+/* 
+Flow of execution:
+
+0s: setup() schedules its 3-second timer
+
+3s: "I am setting up framework" is logged
+    -> setup's callback runs -> calls executor
+
+3s: executor schedules its 2-second timer
+
+5s: "I am executing test cases in the framework !!!" is logged
+    -> executor's callback runs -> calls tearDown
+
+5s: tearDown schedules its 1-second timer
+
+6s: "I am tearing down the framework !!!" is logged
+
+Total sequence of logs:
+1. "I am setting up framework"  (after 3s)
+2. "I am executing test cases in the framework !!!" (after 5s)
+3. "I am tearing down the framework !!!" (after 6s)
+*/
+
+//todo : BENEFIT: Ensures order of execution: setup → executor → tearDown
+// Even though each function is async, the next step waits for the previous to finish by passing callbacks.
+
+
+//! 🏁🏁🏁  EXPLANATION OF ABOVE CODE ENDS HERE🏁🏁🏁 ==================================================================
+
+//!🏴‍☠️🏴‍☠️🏴‍☠️ This gives rise to PYRAMID OF DOOM or CALLBACK HELL if there are so many callbacks. 🏴‍☠️🏴‍☠️🏴‍☠️
 
 //* The issue of PYRAMID OF DOOM or CALLBACK HELL can be solved using:
 

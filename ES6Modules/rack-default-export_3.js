@@ -17,8 +17,21 @@
 
 //---------------------------------------------------------------------------------
 
+//* Different ways to export default from a file:
 
-//In this example, we have mixed default export with named export.
+function add(a, b) {
+  return a + b;
+}
+
+//export default add; //🔆 WAY 1🔆
+
+// export default function add(a, b) {  //🔆 WAY 2🔆
+//   return a + b;
+// }
+
+//==================================================================================================
+
+//In this example 2, we have mixed default export with named export.
 
 // variables
 
@@ -59,16 +72,32 @@ export class StringManipulator{
 //===========================================================================================================
 
 
-//! below is also valid :
+//! Exporting multiple items from default import :
 
 // export default { item1, item2, item3 };
 
 // This is perfectly valid. You're exporting a single object as the default export.
 // That object contains multiple properties (item1, item2, item3).
 
-//* When importing this module, you would use:
+//* When importing default module, you would use:
 
-// import myObject from './module.js';
+//* 🔆 WAY 1 🔆
+
+//todo ☠️☠️ Curly braces are for named exports ONLY ☠️☠️
+//todo ☠️☠️ Default exports must be imported without braces. ☠️☠️
+
+
+//import {myObject} from './module.js'; //! ERROR
+// import myObject from './module.js'; //✅
+
 // console.log(myObject.item1);
 // console.log(myObject.item2);
 // console.log(myObject.item3);
+
+//* 🔆 WAY 2 🔆 [Assuming default export has multiple items : 'export default { item1, item2, item3 };']
+
+//import * as anyname from './utils.js';
+
+// console.log(anyname.default.item1);
+// console.log(anyname.default.item2);
+// console.log(anyname.default.item3);

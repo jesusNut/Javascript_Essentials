@@ -63,9 +63,12 @@ function teardown() {
 }
 
 function printResults() {
-  setTimeout(() => {
-    console.log("I am Printing results..");
-  }, 1000);
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      console.log("I am Printing results..");
+      resolve();
+    }, 1000);
+  });
 }
 
 //* Consuming promise:
@@ -74,7 +77,7 @@ async function sequencer() {
   await setUp();
   await performer();
   await teardown();
-   printResults();
+  await printResults();
 }
 
 sequencer();

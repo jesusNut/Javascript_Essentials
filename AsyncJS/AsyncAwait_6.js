@@ -31,7 +31,7 @@ async function bankerJob() {
   } catch (err) {
     console.log("error is", err);
     throw new Error(err); //* if we dont throw this error, then line 37 and 38 will run.
-    //* In order tp stop that execution we need to thorw again and catch in .catch() method.
+    //* In order to stop that execution we need to thorw again and catch in .catch() method.
   }
 }
 

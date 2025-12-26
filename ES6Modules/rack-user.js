@@ -89,15 +89,28 @@
 *================================================================================================**/
 
 //! 1. The path of the file must be appended with .js extension.
-
 //! 2.  Name of the exported items and imported items CAN BE DIFFERENT in case of DEFAULT EXPORTS.
 
-// import anyname from './rack-default-export_3.js' //importing for default export
-// import { Utils1, StringManipulator } from './rack-default-export_3.js' //importing for named exports
-// //since the above imports are for named exports, so names must be same while exporting and importing
+//* When importing default module, you would use:
 
-// console.log(anyname);
-// Utils1();
+//* 🔆 WAY 1 🔆
 
-// const obj4 = new StringManipulator('I am Kaani Mojhi...');
-// console.log(obj4.upperCaseTransformer());
+//todo ☠️☠️ Curly braces are for named exports ONLY ☠️☠️
+//todo ☠️☠️ Default exports must be imported without braces. ☠️☠️
+
+
+//import {myObject} from './module.js'; //! ERROR
+// import myObject from './module.js'; //✅ myObject is actual name of entity exported.
+// import anyname from './module.js'; ✅ We can use any name for default import.
+
+// console.log(myObject.item1);
+// console.log(myObject.item2);
+// console.log(myObject.item3);
+
+//* 🔆 WAY 2 🔆 [Assuming default export has multiple items : 'export default { item1, item2, item3 };']
+
+//import * as anyname from './utils.js';
+
+// console.log(anyname.default.item1);
+// console.log(anyname.default.item2);
+// console.log(anyname.default.item3);

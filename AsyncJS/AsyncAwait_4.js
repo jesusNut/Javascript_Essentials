@@ -11,6 +11,12 @@ async function getData(data) {
   return data.toUpperCase();
 }
 
+//above code is equivalent to :
+// function getData(data: string): Promise<string> {
+//   return Promise.resolve(data.toUpperCase());
+// }
+
+
 //******** consuming async function Way 1 using then()***********
 
 // getData("abhishek").then((data) => {
@@ -55,42 +61,89 @@ console.log(res);
 //! promisename.then(callback):
 // When you use .then(callback) the callback function will receive the value that was passed to resolve().
 
-//* Example 1:
+//* Example 1: How to guarantee execution sequence using await.
 
-let promise1 = new Promise((resolve, reject) => {
-  setTimeout(() => {
-    resolve("promise 1");
-  }, 7000);
-});
+//todo : MEMORISE IT: [🥶🥶🥶Always wrap callback-based asynchronous code (e.g., setTimeout, fs.readFile, or other callback APIs) inside a Promise 
+//todo                 if you want await to pause execution and guarantee sequential order.🥶🥶🥶]
 
-let promise2 = new Promise((resolve, reject) => {
-  setTimeout(() => {
-    resolve("promise 2");
-  }, 5000);
-});
+//! In this example if we put async keyword in front of functions - promise1, promise2 and promise3 is redundant.
 
-let promise3 = new Promise((resolve, reject) => {
-  setTimeout(() => {
-    resolve("promise 3");
-  }, 3000);
-});
-
-async function Demo() {
-  const dataSentFromResolve1 = await promise1;
-  const dataSentFromResolve2 = await promise2;
-  const dataSentFromResolve3 = await promise3;
-  return (
-    dataSentFromResolve1 +
-    "--" +
-    dataSentFromResolve2 +
-    "--" +
-    dataSentFromResolve3
-  );
+function promise1() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      console.log("I am promise 1");
+      resolve("promise 1");
+    }, 7000);
+  });
 }
 
-// Demo().then((finalResult) => {
-//   console.log(finalResult);
-// });
+function promise2() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      console.log("I am promise 2");
+      resolve("promise 2");
+    }, 5000);
+  });
+}
+
+function promise3() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      console.log("I am promise 3");
+      resolve("promise 3");
+    }, 3000);
+  });
+}
+
+async function Demo() {
+  const d1 = await promise1(); // starts now → waits 7s
+  const d2 = await promise2(); // starts AFTER d1 → waits 5s
+  const d3 = await promise3(); // starts AFTER d2 → waits 3s
+
+}
+
+Demo();
+
+//! wrong way to write the above example.
+
+// ❌ WRONG EXAMPLE: Async function with setTimeout without returning a Promise
+
+async function promise1() {
+    setTimeout(() => {
+      console.log("I am promise 1");
+    }, 7000);
+
+    // ⚠️ Even though this is async, the function returns immediately:
+    //     async functions always return a Promise automatically.
+    //     Since no value is returned, it's like:
+    //        return Promise.resolve(undefined)
+    //     await on this does NOT wait for the setTimeout!
+}
+
+async function promise2() {
+    setTimeout(() => {
+      console.log("I am promise 2");
+    }, 5000);
+    // ❌ Same issue: returns immediately, does not wait
+}
+
+async function promise3() {
+    setTimeout(() => {
+      console.log("I am promise 3");
+    }, 3000);
+    // ❌ Same issue: returns immediately, does not wait
+}
+
+async function Demo() {
+  const d1 = await promise1(); // ❌ Does NOT wait 7s
+  const d2 = await promise2(); // ❌ Does NOT wait 5s
+  const d3 = await promise3(); // ❌ Does NOT wait 3s
+}
+
+Demo();
+
+//todo : await pauses only for the Promise returned. Here, the Promise resolves immediately as 'return Promise.resolve(undefined);', so await does not wait for setTimeout.
+
 
 //* Example 2:
 

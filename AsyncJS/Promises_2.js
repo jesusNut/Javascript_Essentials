@@ -4,6 +4,90 @@
 //* Used to overcome - the issue of CALLBACK HELL or PYRAMID OF DOOM.
 
 //* SYNTAX: new Promise((resolve, reject)=>{})
+
+//! 🔞🔞 UNDERSTANDING EXECUTOR FUNCTION🔞🔞
+
+//* The function (resolve, reject) => { ... } is called the executor function means the function you pass to new Promise() is called the “executor” function.
+// It runs immediately when the Promise is created.
+// Code inside the Promise executor function is executed immediately and sequentially (synchronously).
+// Its job is to start the asynchronous operation and then call either:
+// resolve(value) → to fulfill the promise
+// reject(reason) → to reject the promise
+
+let myPromise = new Promise((resolve, reject) => {
+  console.log("Executor starts"); // ✅ Runs immediately
+  setTimeout(() => {
+    resolve("Done"); // ✅ Async resolution
+  }, 3000);
+  console.log("Executor ends"); // ✅ Runs immediately
+});
+
+myPromise.then((value) => {
+  console.log(value);
+});
+
+//O/P:
+// Executor starts
+// Executor ends
+// Done
+
+//! 🔞🔞 UNDERSTANDING AN IMPORTANT CONCEPT : .then() and .catch() are always asynchronous🔞🔞
+
+let p = new Promise((resolve, reject) => {
+  console.log("Inside executor");
+  resolve("Done");
+});
+console.log("After promise");
+
+p.then((value) => console.log("Then:", value));
+console.log("Outside then");
+
+//O/P:
+// Inside executor
+// After promise
+// Outside then
+// Then: Done
+
+/* ✂️✂️ Explanation: 
+
+
+1️⃣ Promise Creation:
+   - `new Promise((resolve, reject) => {...})` runs the **executor function immediately (synchronously)**.
+   - Logs: "Inside executor"
+   - `resolve("Done")` is called → schedules the `.then()` callback in the **microtask queue**.
+
+2️⃣ Next Synchronous Line:
+   - `console.log("After promise")` runs immediately.
+   - Logs: "After promise"
+
+3️⃣ Attaching .then():
+   - `p.then(...)` adds the callback to the **microtask queue**.
+   - It does NOT run immediately.
+
+4️⃣ Next Synchronous Line:
+   - `console.log("Outside then")` runs immediately.
+   - Logs: "Outside then"
+
+5️⃣ Microtask Execution:
+   - After all synchronous code is finished, the **microtask queue** is processed.
+   - `.then()` callback runs.
+   - Logs: "Then: Done"
+
+✅ Output Order:
+   1. Inside executor
+   2. After promise
+   3. Outside then
+   4. Then: Done
+
+📌 Key Concepts:
+   - Executor function = synchronous
+   - `resolve()` schedules microtask, does NOT execute `.then()` immediately
+   - `.then()` / `.catch()` always run asynchronously (microtask queue)
+   - Synchronous code always runs first, then microtasks, then macrotasks (like setTimeout)
+*/
+
+//=============================================================================================================================
+
 //* Here, resolve and reject are themselves function provided by the Promise implementation.
 
 // resolve(value):
@@ -23,7 +107,7 @@
 
 //* A promise can have 3 states -
 //? PENDING - any state when the state is neither resolved nor rejected.
-//? FULFILLED - when a promise is resolved.
+//? FULFILLED(Resolved) - when a promise is resolved.
 //? REJECTED - when a promise is rejected.
 
 //* How to consume the Promise?
@@ -33,6 +117,20 @@
 
 //* then() and catch() can also be chained.
 //* then() can be chained if each then() is also returning a promise. [see Promise_3.js] or something else.[Udemy-cope automation - Promise demo lec.70]
+//* If you do not return a Promise from .then() explicitly and try to execute a function (which returns a Promise)  in then, the chain does NOT wait.
+//* Means, If a .then() callback calls a function that returns a Promise, you must return that Promise, otherwise the chain does not wait and moves to the next .then() immediately.
+//  [In example 1 of Promises_3.js, use below code and see the difference :
+ // setUp()
+//   .then(() => {
+//      performer(); ❌ called but not returned
+//   })
+//   .then(() => {
+//      teardown(); ❌ called but not returned
+//   })
+//   .then(() => {
+//     printResults();
+//   }); ]
+//* If you return a normal value, it is auto-wrapped in a resolved Promise and hence it respects the chain.
 
 // Rules of Returning from then():
 
@@ -50,9 +148,8 @@
 
 // If you don't explicitly return anything (or return undefined), the next then() will receive a resolved Promise with the value undefined.
 
-//! UnhandledPromiseRejection : when a promise rejects but that code 
+//! UnhandledPromiseRejection : when a promise rejects but that code
 //! is not handled by coder in either try-catch() block or .catch() method.
-
 
 //*   Example 1 of how promises work:
 
@@ -105,29 +202,28 @@ myPromise2
     console.log(`NOTICE THE DATA COMING HERE : ${error}`);
   });
 
-  //*   Example 3 of how promises work: chaining of then()[not returning a promise but some other datatype.]
+//*   Example 3 of how promises work: chaining of then()[not returning a promise but some other datatype.]
 
-  function getData(data) {
-    return new Promise((resolve, reject) => {
-      let modifiedData = String(data).toUpperCase();
-      resolve(modifiedData);
-    });
-  }
-  
-  //consuming promise:
-  
-  //take upper case data -> break it into words in an array -> print it.
-  
-  getData("Abhishek is great")
-    .then((data) => {
-      console.log(data);
-      const wordArray = String(data).split(" ");
-      return wordArray;
-    })
-    .then((wordArray) => {
-      wordArray.forEach((item) => console.log(item));
-    });
+function getData(data) {
+  return new Promise((resolve, reject) => {
+    let modifiedData = String(data).toUpperCase();
+    resolve(modifiedData);
+  });
+}
 
+//consuming promise:
+
+//take upper case data -> break it into words in an array -> print it.
+
+getData("Abhishek is great")
+  .then((data) => {
+    console.log(data);
+    const wordArray = String(data).split(" ");
+    return wordArray; //Inernally treated as 'return Promise.resolve(wordArray);'
+  })
+  .then((wordArray) => {
+    wordArray.forEach((item) => console.log(item));
+  });
 
 //*  Example 4 of how promises work: GETTING "UnhandledPromiseRejection" !!
 
@@ -139,9 +235,8 @@ function processOrder() {
 
 //consuming promise:
 
-processOrder().then(()=>{
+processOrder().then(() => {
   console.log("promise resolved");
-})
-
+});
 
 //! typeof promise gives : 'Object'

@@ -26,7 +26,7 @@ console.log(`${bookName}---${pages}---${bookPrice}---${bookPub}`);
 
 //the great tester---500---$999.99---Tata Mcgrow Hills
 
-//* The above code can now be accomplished using ARRAY DESTRUCTURING
+//* The above code can now be accomplished using OBJECT DESTRUCTURING
 
 //Example 1:
 

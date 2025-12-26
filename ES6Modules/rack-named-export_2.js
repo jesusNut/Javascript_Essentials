@@ -53,3 +53,19 @@ export {
 
 //! This is not creating an object or using object shorthand. 
 //! This is ES6 named exports in JavaScript modules.
+
+
+//todo ******************* ECMA SCRIPT NON-DEFUALT EXPORTS WIT ALIAS *****************
+
+export {
+  bodyName as name,
+  socks as footWear,
+  Utils1 as Helper1,
+  Utils2 as Helper2,
+  StringManipulator as StrUtil
+};
+
+
+//Then to import it: 
+
+//import { name, footWear,Helper1,Helper2,StrUtil} from "./rack-named-export_1.js";
